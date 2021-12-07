@@ -62,10 +62,13 @@ export const CreatePage = () => {
         <CKEditor
           editor={ClassicEditor}
           data=""
-          onChange={(editor) => {
+          onReady={(editor) => {}}
+          onChange={(event, editor) => {
             const data = editor.getData();
             setDesc(data);
           }}
+          onBlur={(event, editor) => {}}
+          onFocus={(event, editor) => {}}
         />
         <input
           type="submit"
