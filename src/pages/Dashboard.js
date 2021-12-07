@@ -12,7 +12,6 @@ import { AllPages } from "./AllPages";
 export const Dashboard = () => {
   const [token, setToken] = useState("");
   let { path } = useRouteMatch();
-  console.log(path);
   useEffect(() => {
     let getToken = localStorage.getItem(constants.base.token);
     if (getToken !== null || getToken !== undefined) {

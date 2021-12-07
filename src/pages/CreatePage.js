@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -7,6 +11,7 @@ import { urls, constants } from "../utils/index";
 import { PageAPI } from "../data/api/pages";
 
 export const CreatePage = () => {
+  const [desc, setDesc] = useState("");
   let history = useHistory();
   const validationSchema = Yup.object().shape({
     title: Yup.string()
@@ -19,12 +24,15 @@ export const CreatePage = () => {
 
   const onSubmit = async (data) => {
     const token = localStorage.getItem(constants.base.token);
-    let getData =
-      data.img.length === 0
-        ? { title: data.title, desc: data.desc, img: "" }
-        : { title: data.title, desc: data.desc, img: data.img[0].name };
 
-    const result = await PageAPI.createPage(getData, token);
+    const result = await PageAPI.createPage(
+      {
+        title: data.title,
+        img: data.img.length === 0 ? "" : data.img[0].name,
+        desc: desc,
+      },
+      token
+    );
     if (result !== undefined && result !== null) {
       alert("Tạo trang thành công");
       history.push(urls.allPages.path);
@@ -50,11 +58,25 @@ export const CreatePage = () => {
             Chọn hình từ Media
           </button>
         </div>
-        <textarea
-          type="text"
-          placeholder="Nhập mô tả"
-          className="w-full h-52 p-2 my-2 rounded-md border-2"
-          {...register("desc")}
+        <h3 className="text-center text-2xl py-3">Nhập mô tả</h3>
+        <CKEditor
+          editor={ClassicEditor}
+          data=""
+          onReady={(editor) => {
+            // You can store the "editor" and use when it is needed.
+            // console.log("Editor is ready to use!", editor);
+          }}
+          onChange={(event, editor) => {
+            const data = editor.getData();
+            // console.log({ event, editor, data });
+            setDesc(data);
+          }}
+          onBlur={(event, editor) => {
+            // console.log("Blur.", editor);
+          }}
+          onFocus={(event, editor) => {
+            // console.log("Focus.", editor);
+          }}
         />
         <input
           type="submit"
