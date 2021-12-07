@@ -20,6 +20,18 @@ export const PageAPI = {
     }
   },
 
+  updatePage: async (id, data, token) => {
+    try {
+      return await API.put("/page/" + id, data, {
+        headers: {
+          "x-auth-token": token,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
   getAllPages: async () => {
     try {
       return await API.get("/page/list");

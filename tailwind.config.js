@@ -8,6 +8,7 @@ module.exports = {
       hoverColor: "#3c3a3aa6",
       black: "#000",
       white: "#fff",
+      red: "#c00",
       main: {
         light: "#efac8f",
         DEFAULT: "#ef7540",

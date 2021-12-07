@@ -8,16 +8,24 @@ import { constants, urls } from "../utils/index";
 import { CreatePage } from "./CreatePage";
 import { CreateTour } from "./CreateTour";
 import { AllPages } from "./AllPages";
+import { PageAPI } from "../data/api/pages";
+import { EditPage } from "./EditPage";
 
 export const Dashboard = () => {
   const [token, setToken] = useState("");
+  const [pages, setPages] = useState([]);
   let { path } = useRouteMatch();
   useEffect(() => {
     let getToken = localStorage.getItem(constants.base.token);
     if (getToken !== null || getToken !== undefined) {
       setToken(getToken);
     }
+    (async () => {
+      const getPages = await PageAPI.getAllPages();
+      setPages(getPages.data);
+    })();
   }, []);
+
   if (token !== null && token !== undefined) {
     return (
       <div className="w-full">
@@ -33,6 +41,13 @@ export const Dashboard = () => {
               <Route path={urls.createTour.path}>
                 <CreateTour />
               </Route>
+              {pages.map((e) => {
+                return (
+                  <Route key={e._id} path={urls.dashboard.path + "/" + e.slug}>
+                    <EditPage key={e._id} item={e} />
+                  </Route>
+                );
+              })}
               <Route path={urls.allPages.path}>
                 <AllPages />
               </Route>
