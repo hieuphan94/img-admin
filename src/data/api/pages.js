@@ -1,14 +1,26 @@
 import API from "./api";
 
-export const TourAPI = {
-  getTour: async (url) => {
+export const PageAPI = {
+  getPage: async (url) => {
     try {
       return await API.get("/page/" + url);
     } catch (error) {
       console.log(error);
     }
   },
-  getAllTour: async () => {
+  createPage: async (data, token) => {
+    try {
+      return await API.post("/page/", data, {
+        headers: {
+          "x-auth-token": token,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  getAllPages: async () => {
     try {
       return await API.get("/page/list");
     } catch (error) {

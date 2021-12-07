@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useHistory,
-  useRouteMatch,
-} from "react-router-dom";
+import { Switch, Route, useRouteMatch } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Footer } from "../components/base/Footer";
 import { SideBar } from "../components/base/SideBar";
@@ -14,10 +7,11 @@ import { ErrorAccess } from "./ErrorAccess";
 import { constants, urls } from "../utils/index";
 import { CreatePage } from "./CreatePage";
 import { CreateTour } from "./CreateTour";
+import { AllPages } from "./AllPages";
 
 export const Dashboard = () => {
   const [token, setToken] = useState("");
-  let { path, url } = useRouteMatch();
+  let { path } = useRouteMatch();
   console.log(path);
   useEffect(() => {
     let getToken = localStorage.getItem(constants.base.token);
@@ -39,6 +33,9 @@ export const Dashboard = () => {
               </Route>
               <Route path={urls.createTour.path}>
                 <CreateTour />
+              </Route>
+              <Route path={urls.allPages.path}>
+                <AllPages />
               </Route>
             </Switch>
           </div>

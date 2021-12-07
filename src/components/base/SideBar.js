@@ -40,7 +40,7 @@ export const SideBar = () => {
         {/* MEDIA */}
         <ul className="nav-media bg-main-light">
           <li className="p-3">
-            <a>Media</a>
+            <a href="/">Media</a>
           </li>
         </ul>
         <button

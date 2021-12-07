@@ -1,6 +1,4 @@
 import React from "react";
-import { Footer } from "../components/base/Footer";
-import { SideBar } from "../components/base/SideBar";
 
 export const CreateTour = () => {
   return (

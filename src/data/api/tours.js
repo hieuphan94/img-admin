@@ -8,7 +8,7 @@ export const TourAPI = {
       console.log(error);
     }
   },
-  getAllTour: async () => {
+  getAllTours: async () => {
     try {
       return await API.get("/tour/list");
     } catch (error) {

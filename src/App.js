@@ -8,8 +8,6 @@ import {
 } from "react-router-dom";
 import { Login } from "./pages/Login";
 import { Dashboard } from "./pages/Dashboard";
-import { CreatePage } from "./pages/CreatePage";
-import { CreateTour } from "./pages/CreateTour";
 
 function App() {
   return (
