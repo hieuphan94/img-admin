@@ -19,10 +19,11 @@ export const AllPages = () => {
       {pages.map((e) => {
         return (
           <div
-            className="flex justify-between items-center w-full shadow-md rounded-md p-4"
+            className="flex justify-around items-center w-full shadow-md rounded-md p-4"
             key={e._id}
           >
             <h3>{e.title}</h3>
+            <h3>{e.category}</h3>
             <button className="bg-main p-2 rounded-md text-white">
               <Link to={urls.dashboard.path + "/" + e.slug}>Edit</Link>
             </button>
