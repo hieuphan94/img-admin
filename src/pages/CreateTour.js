@@ -61,7 +61,7 @@ export const CreateTour = () => {
     const tour = {
       title: title,
       price: parseInt(price),
-      desc: desc,
+      summary: desc,
       timeline: timeline,
     };
 
