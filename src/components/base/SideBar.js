@@ -10,7 +10,7 @@ export const SideBar = () => {
     history.push(urls.login.path);
   };
   return (
-    <div className="mx-auto w-56 bg-main-superDark h-screen">
+    <div className="mx-auto w-56 bg-main-superDark">
       <div className="welcome bg-white hover:bg-black">
         <h3 className="p-3">
           <Link to={urls.dashboard.path} className="text-white">

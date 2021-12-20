@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+// import { CKEditor } from "@ckeditor/ckeditor5-react";
+// import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -11,7 +11,7 @@ import { PageAPI } from "../data/api/pages";
 
 export const PageShowTList = (props) => {
   const getPageCat = props.isChoose;
-  const [desc, setDesc] = useState("");
+  const [desc] = useState("");
   let history = useHistory();
   const validationSchema = Yup.object().shape({
     title: Yup.string()

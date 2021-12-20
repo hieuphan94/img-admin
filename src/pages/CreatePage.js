@@ -1,14 +1,6 @@
 import React, { useState } from "react";
 
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-
-import { useHistory } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as Yup from "yup";
-import { urls, constants } from "../utils/index";
-import { PageAPI } from "../data/api/pages";
+import { constants } from "../utils/index";
 import { PageShowBlog } from "./PageShowBlog";
 import { PageShowSpecial } from "./PageShowSpecial";
 import { PageShowTCategory } from "./PageShowTCategory";
